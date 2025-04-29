@@ -1,0 +1,46 @@
+def arithmetic_arranger(problems, show_answers=False):
+    if len(problems) > 5:
+        return 'Error: Too many problems.'
+    split_problem = ''
+    top = []
+    second = []
+    line = []
+    solution = []
+
+    for prob in problems:
+        num1, operator, num2 = prob.split()
+
+        if num1.isdigit() == False or num2.isdigit() == False:
+            return 'Error: Numbers must only contain digits.'
+
+        if len(num1) > 4 or len(num2) > 4:
+            return 'Error: Numbers cannot be more than four digits.'
+        
+        if operator != '+' and operator != '-':
+            return "Error: Operator must be '+' or '-'."
+
+        width = max(len(num1), len(num2)) + 2
+        top.append(num1.rjust(width))
+        second.append(operator + num2.rjust(width - 1))
+        line.append('-' * width)
+
+        if show_answers:
+            if operator == '+':
+                solved_addition = str(int(num1) + int(num2))
+                solution.append(solved_addition.rjust(width))
+            else:
+                solved_addition = str(int(num1) - int(num2))
+                solution.append(solved_addition.rjust(width))
+
+    arranged = '    '.join(top) + '\n' + \
+               '    '.join(second) + '\n' + \
+               '    '.join(line)
+        
+    if show_answers:
+        arranged += '\n' + '    '.join(solution)
+    return arranged
+       
+        
+        
+
+print(f'\n{arithmetic_arranger(["3 + 855", "988 + 40"], True)}')
