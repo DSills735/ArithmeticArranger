@@ -1,0 +1,1 @@
+This is downloaded as a plain text file from freeCodeCamp. This is the first project within their Data Science using Python curriculum. I did this to help with a future python project during my B.S. at WGU.
